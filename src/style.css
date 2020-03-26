@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+input{
+    display: block;
+    border-radius: 3px;
+    margin-bottom: 3vh;
+}
+button{
+    background-color: grey;
+    color: white;
+    border-radius: 4px;
+    padding: 5px;
+    margin-right: 4px;
+}
+.login{
+    background:cyan;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+
+.scoreboard{
+    background-color: hotpink;
+    padding: 2rem;
+    border-radius: 5px;
+
+}
+
+
+.main{
+    background-color: indianred;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.options{
+    background-color: indianred;
+    padding: 2rem;
+    border-radius: 5px;
+}
+.opt>li{
+    cursor: pointer;
+}
+.list>li{
+    list-style: none;
+    margin-top: 1rem;
+    margin-right: 3rem;
+}
+
+
+.scoreboard{
+    display: none;
+}
+.main{
+    display: none;
+}
+.options{
+    display: none;
+}
+#start{
+    display: none;
+}
+#waitc{
+    display: none;
+}
+#waits{
+    display: none;
+}

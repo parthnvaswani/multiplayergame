@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="socket.io.js"></script>
+    <script src="index.js" defer></script>
+</head>
+<body>
+
+
+    <div class="login">
+        Name:<input type="text" id="name">
+        Room Code:<input type="text" id="room">
+        Password:<input type="password" id="password">
+        Rounds:*only for team creators<input type="number" id="rounds">
+        <button id="create">create room</button><button id="join">join room</button>
+    </div>
+
+    <div class="scoreboard">
+        Score Board<br/>
+        <ul class="list"></ul>
+        <button id="next">next</button>
+    </div>
+
+    <div class="main">
+        <p class="que">
+            What is your name?
+        </p>
+        <input type="text" id="answer">
+        <button id="submit">submit</button>
+    </div>
+    
+    <button id="start">start</button>
+    <p id="waitc">wait for others to complete</p>
+    <p id="waits">wait for creator to start the game</p>
+
+    <div class="options">
+        Choose the answer you liked the most!!!<br/>
+        <ul class="opt">
+        </ul>
+    </div>
+</body>
+</html>
