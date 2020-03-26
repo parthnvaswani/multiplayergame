@@ -2,7 +2,7 @@ var app = require('express')();
 var express=require('express')
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
-let port=process.env.PORT||3000;
+let port=process.env.PORT||80;
 app.use('/', express.static(__dirname + '/src'));
 
 let rooms=[];
