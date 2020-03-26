@@ -17,7 +17,7 @@ function loadques(){
         return data;
     });
     ques=ques.toString()
-    start=ques.split('\r')
+    start=ques.split('\n')
 }
 
 io.on('connection', function(socket){
