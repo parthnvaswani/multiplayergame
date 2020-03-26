@@ -90,6 +90,7 @@ socket.on('started', function(que){
     document.querySelector('#start').style.display='none';
     document.querySelector('.main').style.display='block';
     document.querySelector('.que').innerHTML=que;
+    document.querySelector('#answer').value='';
 });
 
 //submit answer
@@ -141,6 +142,7 @@ document.querySelector('#next').addEventListener('click',()=>{
 socket.on('nextround', function(que){
     document.querySelector('#waitc').style.display='none';
     document.querySelector('.main').style.display='block';
+    document.querySelector('#answer').value='';
     document.querySelector('.que').innerHTML=que;
 });
 

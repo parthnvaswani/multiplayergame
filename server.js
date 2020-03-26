@@ -2,15 +2,23 @@ var app = require('express')();
 var express=require('express')
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
+const fs=require('fs');
 let port=process.env.PORT||80;
 app.use('/', express.static(__dirname + '/src'));
 
 let rooms=[];
 
-let start=['what if ','how much do '];
-let end=[' became pm?',' earn?'];
+let start=[];
 let qcount;
 
+//get questions
+function loadques(){
+    let ques=fs.readFileSync('ques.txt',(err,data)=>{
+        return data;
+    });
+    ques=ques.toString()
+    start=ques.split('\r\n')
+}
 
 io.on('connection', function(socket){
     console.log('a user connected');
@@ -123,6 +131,7 @@ io.on('connection', function(socket){
 
 http.listen(port, function(){
   console.log('listening on '+port);
+  loadques();
 });
 
 
@@ -168,5 +177,5 @@ function buildques(d) {
     }else{
         qcount=0
     }
-    return start[qcount]+n+end[qcount];
+    return start[qcount].replace('name',n);
 }
