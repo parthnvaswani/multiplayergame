@@ -39,7 +39,7 @@ class info{
 }
 
 
-let socket=io('http://localhost:3000');
+let socket=io(window.location.hostname);
 
 let obj=new info()
 
