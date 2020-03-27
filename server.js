@@ -21,7 +21,6 @@ function loadques(){
 }
 
 io.on('connection', function(socket){
-    console.log('a user connected');
     
     socket.on('create', function(data){
         if(rooms[data.r]){
@@ -29,6 +28,13 @@ io.on('connection', function(socket){
         }else{
             create(data)
             io.to(`${data.id}`).emit('created')
+            let players=[]
+            for(i in rooms[data.r].names){
+                players.push(rooms[data.r].names[i]);
+            }
+            for(let i=0;i<rooms[data.r].members.length;i++){
+                io.to(`${rooms[data.r].members[i]}`).emit('pincreased',players)
+            }
         }
     });
     
@@ -41,6 +47,13 @@ io.on('connection', function(socket){
                 else{ 
                     join(data)
                     io.to(`${data.id}`).emit('joined')
+                    let players=[]
+                    for(i in rooms[data.r].names){
+                        players.push(rooms[data.r].names[i]);
+                    }
+                    for(let i=0;i<rooms[data.r].members.length;i++){
+                        io.to(`${rooms[data.r].members[i]}`).emit('pincreased',players)
+                    }
                 }
             }
             else{
@@ -132,14 +145,12 @@ io.on('connection', function(socket){
                 delete rooms[i];
             }
         }
-        console.log(rooms);
     });
     //socket.broadcast.emit('draw',pos);
 });
    
 
 http.listen(port, function(){
-  console.log('listening on '+port);
   loadques();
 });
 

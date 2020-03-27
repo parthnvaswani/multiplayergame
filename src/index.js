@@ -81,9 +81,18 @@ socket.on('joined', function(){
     document.querySelector('#waits').style.display='block';
 });
 
+//update players in room
+socket.on('pincreased',function(data){
+    document.querySelector('.players').innerHTML='';
+    for(let i=0;i<data.length;i++){
+        document.querySelectorAll('.players').forEach(n=>{
+            n.innerHTML+=`<li>${data[i]}</li>`;
+        });
+    }
+});
 
 //start
-document.querySelector('#start').addEventListener('click',function() {
+document.querySelector('#startb').addEventListener('click',function() {
     obj.start();
 })
 

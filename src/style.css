@@ -45,6 +45,11 @@ button{
     padding: 2rem;
     border-radius: 5px;
 }
+#start,#waits{
+    background-color:mediumpurple;
+    padding: 2rem;
+    border-radius: 5px;
+}
 .opt>li{
     cursor: pointer;
 }
