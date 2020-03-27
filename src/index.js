@@ -36,6 +36,10 @@ class info{
     next(){
         socket.emit('next',{r:this.room,id:socket.id})
     }
+
+    closeroom(){
+        socket.emit('closeroom',{r:this.room,id:socket.id})
+    }
 }
 
 

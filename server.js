@@ -125,6 +125,15 @@ io.on('connection', function(socket){
             delete rooms[data.r]
         }
     });
+
+    socket.on('disconnect',function(){
+        for (i in rooms) {
+            if (rooms[i].creator==socket.id) {
+                delete rooms[i];
+            }
+        }
+        console.log(rooms);
+    });
     //socket.broadcast.emit('draw',pos);
 });
    
@@ -164,12 +173,13 @@ function join(data) {
 }
 
 function buildques(d) {
-    let ran=Math.floor(Math.random()*rooms[d].names.length);
+    let ran=Math.floor(Math.random()*rooms[d].members.length);
     let c=0;
     let n;
     for(i in rooms[d].names){
         if(ran==c){
             n=rooms[d].names[i];
+            c++;
         }else c++;
     }
     if(qcount<start.length-1){
