@@ -7,7 +7,7 @@ let port=process.env.PORT||80;
 app.use('/', express.static(__dirname + '/src'));
 
 let rooms=[];
-
+let creators={};
 let start=[];
 let qcount;
 
@@ -140,10 +140,10 @@ io.on('connection', function(socket){
     });
 
     socket.on('disconnect',function(){
-        for (i in rooms) {
-            if (rooms[i].creator==socket.id) {
-                delete rooms[i];
-            }
+        if(creators[socket.id]){
+            delete rooms[creators[socket.id]]
+            delete creators[socket.id]
+            console.log(creators,rooms);
         }
     });
     //socket.broadcast.emit('draw',pos);
@@ -174,6 +174,7 @@ function create(data) {
     obj.scores[data.id]=0;
     obj.answers[data.id]='';
     rooms[data.r]=obj;
+    creators[data.id]=data.r;
 }
 
 function join(data) {

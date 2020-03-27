@@ -1,10 +1,9 @@
 body{
     margin: 0;
-    padding: 0;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     box-sizing: border-box;
     display: flex;
-    height: 100vh;
-    align-items: center;
     justify-content: center;
 }
 input{
@@ -23,6 +22,7 @@ button{
     background:cyan;
     padding: 2rem;
     border-radius: 5px;
+    height: max-content;
 }
 
 
@@ -30,6 +30,7 @@ button{
     background-color: hotpink;
     padding: 2rem;
     border-radius: 5px;
+    height: max-content;
 
 }
 
@@ -38,19 +39,27 @@ button{
     background-color: indianred;
     padding: 2rem;
     border-radius: 5px;
+    height: max-content;
 }
 
 .options{
     background-color: indianred;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 5px;
+    max-width: 350px;
+    height: max-content;
 }
 #start,#waits{
     background-color:mediumpurple;
     padding: 2rem;
     border-radius: 5px;
 }
+.opt{
+    line-break:anywhere;
+}
 .opt>li{
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
     cursor: pointer;
 }
 .list>li{
