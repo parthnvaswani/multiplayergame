@@ -135,6 +135,7 @@ io.on('connection', function(socket){
             for(let i=0;i<rooms[data.r].members.length;i++){
                 io.to(`${rooms[data.r].members[i]}`).emit('err','all rounds completed')
             }
+            delete creators[rooms[data.r].creator]
             delete rooms[data.r]
         }
     });
@@ -143,7 +144,6 @@ io.on('connection', function(socket){
         if(creators[socket.id]){
             delete rooms[creators[socket.id]]
             delete creators[socket.id]
-            console.log(creators,rooms);
         }
     });
     //socket.broadcast.emit('draw',pos);
