@@ -6,7 +6,7 @@ const fs=require('fs');
 let port=process.env.PORT||80;
 app.use('/', express.static(__dirname + '/src'));
 
-let rooms=[];
+let rooms={};
 let creators={};
 let start=[];
 let qcount;
