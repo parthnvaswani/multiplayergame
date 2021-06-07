@@ -1,56 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="description"
+      content="Multiplayer Game for based on question and answers."
+    />
+    <meta
+      name="og:description"
+      content="Multiplayer Game for based on question and answers."
+    />
+    <meta name="og:url" content="/" />
+    <meta name="og:title" content="Multiplayer Game" />
+    <meta name="og:image" content="/MPG.png" />
+    <link rel="icon" href="favicon.ico" />
+    <title>Multiplayer Game</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="socket.io.js"></script>
     <script src="index.js" defer></script>
-    <script data-ad-client="ca-pub-2403354967478826" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-</head>
-<body>
-
-
+  </head>
+  <body>
     <div class="login">
-        Name:<input type="text" id="name">
-        Room Code:<input type="text" id="room">
-        Password:<input type="password" id="password">
-        Rounds:*only for team creators<input type="number" id="rounds">
-        <button id="create">create room</button><button id="join">join room</button>
+      Name:<input type="text" id="name" /> Room Code:<input
+        type="text"
+        id="room"
+      />
+      Password:<input type="password" id="password" /> Rounds:*only for team
+      creators<input type="number" id="rounds" />
+      <button id="create">create room</button
+      ><button id="join">join room</button>
     </div>
 
     <div class="scoreboard">
-        Score Board<br/>
-        <ul class="list"></ul>
-        <button id="next">next</button>
+      Score Board<br />
+      <ul class="list"></ul>
+      <button id="next">next</button>
     </div>
 
     <div class="main">
-        <p class="que">
-            What is your name?
-        </p>
-        <input type="text" id="answer">
-        <button id="submit">submit</button>
+      <p class="que">What is your name?</p>
+      <input type="text" id="answer" />
+      <button id="submit">submit</button>
     </div>
-    
+
     <div id="start">
-        <h3>players in room</h3>
-        <ul class="players"></ul><br/>
-        <button id="startb">start</button>
+      <h3>players in room</h3>
+      <ul class="players"></ul>
+      <br />
+      <button id="startb">start</button>
     </div>
     <p id="waitc">wait for others to complete</p>
     <div id="waits">
-        <h3>players in room</h3>
-        <ul class="players"></ul><br/>
-        wait for creator to start the game
+      <h3>players in room</h3>
+      <ul class="players"></ul>
+      <br />
+      wait for creator to start the game
     </div>
 
     <div class="options">
-        Choose the answer you liked the most!!!<br/>
-        <ul class="opt">
-        </ul>
+      Choose the answer you liked the most!!!<br />
+      <ul class="opt"></ul>
     </div>
-</body>
+  </body>
 </html>
