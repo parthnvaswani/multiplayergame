@@ -43,13 +43,12 @@ class info {
     socket.emit("next", { r: this.room, id: socket.id });
   }
 
-  closeroom() {
+  closeRoom() {
     socket.emit("closeroom", { r: this.room, id: socket.id });
   }
 }
 
-let socket = io(window.location.hostname);
-
+let socket = io(window.location.host);
 let obj = new info();
 
 //create room
@@ -117,9 +116,8 @@ document.querySelector("#submit").addEventListener("click", function () {
   } else alert("first enter an answer");
 });
 
-//vote screen
+// vote screen
 socket.on("votescreen", function (answers) {
-  console.log(answers);
   document.querySelector("#waitc").style.display = "none";
   document.querySelector(".options").style.display = "block";
   for (let i = 0; i < answers.length; i++) {

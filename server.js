@@ -9,10 +9,10 @@ app.use("/", express.static(__dirname + "/public"));
 let rooms = {};
 let creators = {};
 let start = [];
-let qcount;
+let qCount;
 
 //get questions
-function loadques() {
+function loadQuestions() {
   let ques = fs.readFileSync("ques.txt", (err, data) => {
     return data;
   });
@@ -64,7 +64,7 @@ io.on("connection", function (socket) {
   socket.on("start", function (data) {
     if (rooms[data.r].creator == data.id) {
       rooms[data.r].started = true;
-      let question = buildques(data.r);
+      let question = buildQuestion(data.r);
       for (let i = 0; i < rooms[data.r].members.length; i++) {
         io.to(`${rooms[data.r].members[i]}`).emit("started", question);
       }
@@ -113,13 +113,13 @@ io.on("connection", function (socket) {
 
   socket.on("next", function (data) {
     if (rooms[data.r].creator == data.id) {
-      rooms[data.r].currentround++;
+      rooms[data.r].currentRound++;
     }
-    if (rooms[data.r].currentround < rooms[data.r].rounds) {
+    if (rooms[data.r].currentRound < rooms[data.r].rounds) {
       rooms[data.r].counter++;
       if (rooms[data.r].counter == rooms[data.r].members.length) {
         rooms[data.r].counter = 0;
-        let question = buildques(data.r);
+        let question = buildQuestion(data.r);
         for (let i = 0; i < rooms[data.r].members.length; i++) {
           io.to(`${rooms[data.r].members[i]}`).emit("nextround", question);
         }
@@ -146,7 +146,7 @@ io.on("connection", function (socket) {
 });
 
 http.listen(port, function () {
-  loadques();
+  loadQuestions();
 });
 
 function create(data) {
@@ -160,7 +160,7 @@ function create(data) {
     started: false,
     answers: [],
     counter: 0,
-    currentround: 0,
+    currentRound: 0,
   };
   obj.names[data.id] = data.n;
   obj.scores[data.id] = 0;
@@ -176,7 +176,7 @@ function join(data) {
   rooms[data.r].answers[data.id] = "";
 }
 
-function buildques(d) {
+function buildQuestion(d) {
   let ran = Math.floor(Math.random() * rooms[d].members.length);
   let c = 0;
   let n;
@@ -186,10 +186,10 @@ function buildques(d) {
       c++;
     } else c++;
   }
-  if (qcount < start.length - 1) {
-    qcount++;
+  if (qCount < start.length - 1) {
+    qCount++;
   } else {
-    qcount = 0;
+    qCount = 0;
   }
-  return start[qcount].replace("name", n);
+  return start[qCount].replace("name", n);
 }
