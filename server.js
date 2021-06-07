@@ -3,7 +3,7 @@ var express = require("express");
 var http = require("http").createServer(app);
 var io = require("socket.io")(http);
 const fs = require("fs");
-let port = process.env.PORT || 80;
+let port = process.env.PORT || 8000;
 app.use("/", express.static(__dirname + "/public"));
 
 let rooms = {};
