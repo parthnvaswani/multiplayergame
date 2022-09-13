@@ -1,3 +1,3 @@
 # MultiPlayerGame
 
-play this game at https://parthmultigame.herokuapp.com/
+play this game at https://multiplayergame.up.railway.app/
